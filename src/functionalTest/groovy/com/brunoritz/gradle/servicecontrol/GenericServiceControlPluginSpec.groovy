@@ -12,7 +12,6 @@ class GenericServiceControlPluginSpec
 {
 	// Note: If this test fails, consider disabling the local firewall. Some firewalls might prompt to allow incoming
 	// connections, but the prompt might only stay visible for a few seconds.
-	@IgnoreIf({ !System.getProperty('os.name').containsIgnoreCase('Mac OS') })
 	def 'It shall be possible to start an arbitrary generic service and wait for it to open a listening socket'()
 	{
 		given:
@@ -57,7 +56,7 @@ class GenericServiceControlPluginSpec
 				}
 
 				genericServiceControl {
-					dummyService {
+					pingService {
 						executable.set('ping')
 						args.set(['127.0.0.1'])
 
@@ -69,18 +68,22 @@ class GenericServiceControlPluginSpec
 		when:
 			def result = GradleRunner.create()
 				.withProjectDir(projectDirectory)
-				.withArguments('--configuration-cache', 'startDummyService')
+				.withArguments('--configuration-cache', 'startPingService')
 				.withPluginClasspath()
 				.build()
 
 		then:
-			result.task(':startDummyService').outcome == SUCCESS
+			result.task(':startPingService').outcome == SUCCESS
+
+		cleanup:
+			println('***************')
+			println(new File(projectDirectory, 'logs/stdout.pingService.log').text)
+			println(new File(projectDirectory, 'logs/stderr.pingService.log').text)
 	}
 
 	// Note: If this test fails, consider disabling the local firewall. Some firewalls might prompt to allow incoming
 	// connections, but the prompt might only stay visible for a few seconds.
-	@IgnoreIf({ !System.getProperty('os.name').containsIgnoreCase('Mac OS') })
-	def 'It shall be posssible to stop a running generic service'()
+	def 'It shall be possible to stop a running generic service'()
 	{
 		given:
 			def projectDirectory = File.createTempDir()

@@ -57,6 +57,12 @@ testing {
 	}
 }
 
+functionalTest {
+	testLogging {
+		showStandardStreams = true
+	}
+}
+
 gradlePlugin {
 	website.set('https://github.com/birdflyer-lszo/gradle-service-control')
 	vcsUrl.set('https://github.com/birdflyer-lszo/gradle-service-control')
