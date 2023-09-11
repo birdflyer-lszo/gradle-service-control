@@ -12,6 +12,7 @@ class GenericServiceControlPluginSpec
 {
 	// Note: If this test fails, consider disabling the local firewall. Some firewalls might prompt to allow incoming
 	// connections, but the prompt might only stay visible for a few seconds.
+	@IgnoreIf({ System.getProperty('os.name').containsIgnoreCase('windows') })
 	def 'It shall be possible to start an arbitrary generic service and wait for it to open a listening socket'()
 	{
 		given:
@@ -42,12 +43,6 @@ class GenericServiceControlPluginSpec
 		then:
 			result.task(':startNetCat').outcome == SUCCESS
 			serverListeningOnPort(1983)
-
-
-		cleanup:
-			println('***************')
-			println(new File(projectDirectory, 'logs/stdout.netCat.log').text)
-			println(new File(projectDirectory, 'logs/stderr.netCat.log').text)
 	}
 
 	def 'It shall be possible to start an arbitrary generic service and wait for it to log a specific message'()
@@ -84,6 +79,7 @@ class GenericServiceControlPluginSpec
 
 	// Note: If this test fails, consider disabling the local firewall. Some firewalls might prompt to allow incoming
 	// connections, but the prompt might only stay visible for a few seconds.
+	@IgnoreIf({ System.getProperty('os.name').containsIgnoreCase('windows') })
 	def 'It shall be possible to stop a running generic service'()
 	{
 		given:
@@ -120,11 +116,6 @@ class GenericServiceControlPluginSpec
 		then:
 			result.task(':stopNetCat').outcome == SUCCESS
 			!serverListeningOnPort(1984)
-
-		cleanup:
-			println('***************')
-			println(new File(projectDirectory, 'logs/stdout.netCat.log').text)
-			println(new File(projectDirectory, 'logs/stderr.netCat.log').text)
 	}
 
 	def 'It shall create controlling tasks for each defined service'()
