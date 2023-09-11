@@ -45,7 +45,7 @@ public class JavaServiceDefinition
 	public JavaServiceDefinition(String name, Project project)
 	{
 		ObjectFactory factory = project.getObjects();
-		File buildDirectory = project.getBuildDir();
+		DirectoryProperty buildDirectory = project.getLayout().getBuildDirectory();
 		File logsDirectory = new File(project.getProjectDir(), "logs");
 
 		this.name = name;
@@ -69,7 +69,7 @@ public class JavaServiceDefinition
 		agentArgs = factory.property(CharSequence.class);
 
 		workingDirectory.set(project.getProjectDir());
-		argumentsFile.set(project.file(String.format("%s/jvmargs.%s.txt", buildDirectory, name)));
+		argumentsFile.set(buildDirectory.file(String.format("jvmargs.%s.txt", name)));
 		pidFile.set(project.file(String.format("service.%s.pid", name)));
 		standardOutputLog.set(project.file(String.format("%s/stdout.%s.log", logsDirectory, name)));
 		errorOutputLog.set(project.file(String.format("%s/stderr.%s.log", logsDirectory, name)));

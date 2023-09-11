@@ -27,7 +27,7 @@ class JavaServiceDefinitionSpec
 			def service = newServiceDefinition(project)
 
 		expect:
-			service.argumentsFile.get().asFile == new File(project.buildDir, "jvmargs.${service.name}.txt")
+			service.argumentsFile.get() == project.layout.buildDirectory.file("jvmargs.${service.name}.txt").get()
 	}
 
 	def 'It shall configure the default PID file name'()
