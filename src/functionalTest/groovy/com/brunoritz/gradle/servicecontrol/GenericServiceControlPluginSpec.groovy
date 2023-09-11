@@ -46,8 +46,8 @@ class GenericServiceControlPluginSpec
 
 		cleanup:
 			println('***************')
-			println(new File(projectDirectory, 'logs/stdout.pingService.log').text)
-			println(new File(projectDirectory, 'logs/stderr.pingService.log').text)
+			println(new File(projectDirectory, 'logs/stdout.netCat.log').text)
+			println(new File(projectDirectory, 'logs/stderr.netCat.log').text)
 	}
 
 	def 'It shall be possible to start an arbitrary generic service and wait for it to log a specific message'()
@@ -123,8 +123,8 @@ class GenericServiceControlPluginSpec
 
 		cleanup:
 			println('***************')
-			println(new File(projectDirectory, 'logs/stdout.pingService.log').text)
-			println(new File(projectDirectory, 'logs/stderr.pingService.log').text)
+			println(new File(projectDirectory, 'logs/stdout.netCat.log').text)
+			println(new File(projectDirectory, 'logs/stderr.netCat.log').text)
 	}
 
 	def 'It shall create controlling tasks for each defined service'()
@@ -167,9 +167,5 @@ class GenericServiceControlPluginSpec
 			result.output.contains('restartBinTrue')
 
 			result.task(':tasks').outcome == SUCCESS
-		cleanup:
-			println('***************')
-			println(new File(projectDirectory, 'logs/stdout.pingService.log').text)
-			println(new File(projectDirectory, 'logs/stderr.pingService.log').text)
 	}
 }
