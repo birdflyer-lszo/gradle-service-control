@@ -1,0 +1,76 @@
+name: build
+
+on:
+    pull_request:
+    push:
+        branches:
+            - develop
+            - master
+
+permissions:
+    checks: write
+
+jobs:
+    build:
+        runs-on: ${{ matrix.config.os }}
+
+        strategy:
+            matrix:
+                config:
+                    -   os: ubuntu-latest
+                    -   os: windows-latest
+                    -   os: macos-latest
+        steps:
+            -   name: Checkout Source Code
+                uses: actions/checkout@v3.6.0
+                with:
+                    fetch-depth: '0'
+
+            -   name: Install Java
+                uses: actions/setup-java@v3.12.0
+                with:
+                    distribution: zulu
+                    java-version: 17
+
+            -   name: Setup Gradle
+                uses: gradle/gradle-build-action@v2.7.1
+                with:
+                    cache-read-only: ${{ github.event_name == 'pull_request' }}
+
+            -   name: Build and Unit Testing
+                run: ./gradlew build
+
+            -   name: Integration Testing
+                run: ./gradlew integrationTest
+
+            -   name: Functional Testing
+                run: ./gradlew functionalTest
+
+            -   name: Publish Test Report
+                uses: mikepenz/action-junit-report@v3
+                if: always()
+                with:
+                    commit: ${{github.event.workflow_run.head_sha}}
+                    check_name: Test Report ${{ matrix.config.os }}
+                    report_paths: build/test-results/**/TEST-*.xml
+
+            -   name: Publish Checkstyle Report
+                uses: jwgmeligmeyling/checkstyle-github-action@master
+                if: matrix.config.os == 'ubuntu-latest'
+                with:
+                    title: CheckStyle Report
+                    path: build/reports/checkstyle/main.xml
+
+            -   name: Publish PMD Report
+                uses: jwgmeligmeyling/pmd-github-action@master
+                if: matrix.config.os == 'ubuntu-latest'
+                with:
+                    title: PMD Report
+                    path: build/reports/pmd/main.xml
+
+            -   name: Publish SpotBugs Report
+                uses: jwgmeligmeyling/spotbugs-github-action@master
+                if: matrix.config.os == 'ubuntu-latest'
+                with:
+                    title: SpotBugs Report
+                    path: build/reports/spotbugs/main.xml

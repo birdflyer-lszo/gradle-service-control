@@ -1,0 +1,47 @@
+name: Feature Request
+description: Request a new feature or change an existing one
+title: "[Feature]: "
+labels:
+    - feature
+
+body:
+    -   type: input
+        id: contact
+        attributes:
+            label: Contact Details
+            description: How can we get in touch with you if we need more info?
+            placeholder: ex. email@example.com
+        validations:
+            required: false
+
+    -   type: textarea
+        id: description
+        attributes:
+            label: Description
+            description: >
+                Please describe the new feature or behavior. If possible, please provide syntax examples/wishes for
+                further discussions.
+            placeholder: Describe the new feature
+        validations:
+            required: true
+
+    -   type: textarea
+        id: alternatives
+        attributes:
+            label: Alternatives
+            description: >
+                A clear and concise description of any alternative solutions or features already considered.
+            placeholder: Alterntives
+
+    -   type: checkboxes
+        id: platform
+        attributes:
+            label: Platform
+            description: Which platforms should be taken into consideration?
+            options:
+                - label: Windows
+                - label: macOS (Apple Silicon)
+                - label: macOS (Intel)
+                - label: Linux
+        validations:
+            required: true

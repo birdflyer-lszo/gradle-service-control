@@ -1,0 +1,76 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels:
+    - bug
+    - triage
+
+body:
+    -   type: markdown
+        attributes:
+            value: |
+                Thanks for taking the time to fill out this bug report.
+
+    -   type: input
+        id: contact
+        attributes:
+            label: Contact Details
+            description: How can we get in touch with you if we need more info?
+            placeholder: ex. email@example.com
+        validations:
+            required: false
+
+    -   type: textarea
+        id: problem-description
+        attributes:
+            label: Problem Description
+            description: >
+                Please describe the expected behavior as well. If possible, please provide a minimal build script to
+                reproduce the issue.
+            placeholder: Describe the wrong behavior
+        validations:
+            required: true
+
+    -   type: input
+        id: jdk-version
+        attributes:
+            label: JDK Version
+            description: On which version of JDK does the problem occur?
+        validations:
+            required: true
+
+    -   type: input
+        id: gradle-version
+        attributes:
+            label: Gradle Version
+            description: On which version of Gradle does the problem occur?
+        validations:
+            required: true
+
+    -   type: input
+        id: plugin-version
+        attributes:
+            label: Plugin Version
+            description: On which version of this plugin does the problem occur?
+        validations:
+            required: true
+
+    -   type: checkboxes
+        id: platform
+        attributes:
+            label: Platform
+            description: On which platforms does the problem occur?
+            options:
+                - label: Windows
+                - label: macOS (Apple Silicon)
+                - label: macOS (Intel)
+                - label: Linux
+        validations:
+            required: true
+
+    -   type: textarea
+        id: logs
+        attributes:
+            label: Relevant log output
+            description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+            render: shell
