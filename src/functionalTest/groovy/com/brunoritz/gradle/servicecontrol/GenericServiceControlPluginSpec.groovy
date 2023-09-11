@@ -42,6 +42,12 @@ class GenericServiceControlPluginSpec
 		then:
 			result.task(':startNetCat').outcome == SUCCESS
 			serverListeningOnPort(1983)
+
+
+		cleanup:
+			println('***************')
+			println(new File(projectDirectory, 'logs/stdout.pingService.log').text)
+			println(new File(projectDirectory, 'logs/stderr.pingService.log').text)
 	}
 
 	def 'It shall be possible to start an arbitrary generic service and wait for it to log a specific message'()
@@ -60,7 +66,7 @@ class GenericServiceControlPluginSpec
 						executable.set('ping')
 						args.set(['127.0.0.1'])
 
-						startupLogMessage.set('64 bytes from')
+						startupLogMessage.set('127.0.0.1')
 					}
 				}
 			'''
@@ -74,11 +80,6 @@ class GenericServiceControlPluginSpec
 
 		then:
 			result.task(':startPingService').outcome == SUCCESS
-
-		cleanup:
-			println('***************')
-			println(new File(projectDirectory, 'logs/stdout.pingService.log').text)
-			println(new File(projectDirectory, 'logs/stderr.pingService.log').text)
 	}
 
 	// Note: If this test fails, consider disabling the local firewall. Some firewalls might prompt to allow incoming
@@ -119,6 +120,11 @@ class GenericServiceControlPluginSpec
 		then:
 			result.task(':stopNetCat').outcome == SUCCESS
 			!serverListeningOnPort(1984)
+
+		cleanup:
+			println('***************')
+			println(new File(projectDirectory, 'logs/stdout.pingService.log').text)
+			println(new File(projectDirectory, 'logs/stderr.pingService.log').text)
 	}
 
 	def 'It shall create controlling tasks for each defined service'()
@@ -161,5 +167,9 @@ class GenericServiceControlPluginSpec
 			result.output.contains('restartBinTrue')
 
 			result.task(':tasks').outcome == SUCCESS
+		cleanup:
+			println('***************')
+			println(new File(projectDirectory, 'logs/stdout.pingService.log').text)
+			println(new File(projectDirectory, 'logs/stderr.pingService.log').text)
 	}
 }
