@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter
+	xmlns="https://github.com/spotbugs/filter/3.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://github.com/spotbugs/filter/3.0.0
+        https://raw.githubusercontent.com/spotbugs/spotbugs/3.1.0/spotbugs/etc/findbugsfilter.xsd">
+	<!--
+	This category produces false-positives as well as reports some intentions as bugs. In particular, it is desired to
+	expose properties in extension classes.
+	-->
+	<Match>
+		<Bug category="MALICIOUS_CODE"/>
+	</Match>
+
+	<!-- Null checks are now handled by Checker Framework. SpotBugs produces false positives with Checker applied. -->
+	<Match>
+		<Bug pattern="NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE"/>
+	</Match>
+
+	<!--
+	Spockframework/Groovy seem to produce code that appears buggy to SpotBugs. Ignore them as we have no control over
+	that behavior.
+	-->
+	<Match>
+		<Class name="~.*Spec.*"/>
+		<Bug
+			pattern="SE_NO_SERIALVERSIONID,NP_NONNULL_PARAM_VIOLATION,NP_NONNULL_RETURN_VIOLATION,
+			NP_ALWAYS_NULL_EXCEPTION,RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT"
+		/>
+	</Match>
+</FindBugsFilter>
