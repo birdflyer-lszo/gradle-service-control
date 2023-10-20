@@ -67,8 +67,8 @@ tasks.named<Test>("functionalTest") {
 }
 
 gradlePlugin {
-	website.set("https://github.com/birdflyer-lszo/gradle-service-control")
-	vcsUrl.set("https://github.com/birdflyer-lszo/gradle-service-control")
+	website = "https://github.com/birdflyer-lszo/gradle-service-control"
+	vcsUrl = "https://github.com/birdflyer-lszo/gradle-service-control"
 
 	plugins {
 		create("javaServiceControl") {
@@ -77,11 +77,11 @@ gradlePlugin {
 
 			displayName = "Service Control Plugin"
 			description = "Allows starting, stopping and restarting of Java services in developer environments"
-			tags.set(listOf(
+			tags = listOf(
 				"java",
 				"service",
 				"testing"
-			))
+			)
 		}
 
 		create("genericServiceControl") {
@@ -90,11 +90,11 @@ gradlePlugin {
 
 			displayName = "Service Control Plugin"
 			description = "Allows starting, stopping and restarting of generic services in developer environments"
-			tags.set(listOf(
+			tags = listOf(
 				"generic",
 				"service",
 				"testing"
-			))
+			)
 		}
 	}
 
@@ -117,8 +117,8 @@ dependencies {
 }
 
 spotbugs {
-	excludeFilter.set(file("config/spotbugs-exclusions.xml"))
-	showStackTraces.set(false)
+	excludeFilter = file("config/spotbugs-exclusions.xml")
+	showStackTraces = false
 
 	effort = Effort.MAX
 }
