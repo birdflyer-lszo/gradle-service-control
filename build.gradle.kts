@@ -108,7 +108,7 @@ configurations["integrationTestImplementation"].extendsFrom(configurations["test
 
 dependencies {
 	implementation("com.github.spotbugs:spotbugs-annotations:4.8.0")
-	implementation("commons-io:commons-io:2.14.0")
+	implementation("commons-io:commons-io:2.15.0")
 	implementation("io.vavr:vavr:0.10.4")
 	implementation("net.jcip:jcip-annotations:1.0")
 
