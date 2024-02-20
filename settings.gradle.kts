@@ -23,12 +23,10 @@ dependencyResolutionManagement {
 }
 
 gradleEnterprise {
-	if (System.getenv("CI") != null) {
-		buildScan {
-			publishAlways()
-			termsOfServiceUrl = "https://gradle.com/terms-of-service"
-			termsOfServiceAgree = "yes"
-		}
+	buildScan {
+		publishAlwaysIf(System.getenv("CI") != null)
+		termsOfServiceUrl = "https://gradle.com/terms-of-service"
+		termsOfServiceAgree = "yes"
 	}
 }
 

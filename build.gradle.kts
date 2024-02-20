@@ -160,6 +160,11 @@ gitVersioning.apply {
 	}
 }
 
+tasks.wrapper {
+	gradleVersion = "8.6"
+	distributionType = Wrapper.DistributionType.ALL
+}
+
 idea {
 	module {
 		testSources.from(
