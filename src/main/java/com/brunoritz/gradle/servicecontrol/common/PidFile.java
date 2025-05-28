@@ -24,7 +24,7 @@ public class PidFile
 
 	/**
 	 * Creates an empty PID file. This method only succeeds, if the specified PID file does not exist at the time of
-	 * incovation.
+	 * invocation.
 	 *
 	 * @param pidFile
 	 * 	The path of the PID file to create
@@ -109,7 +109,7 @@ public class PidFile
 	}
 
 	/**
-	 * Deletes an existing PID file. This is a best effort method and depending on open file descriptors, it may not
+	 * Deletes an existing PID file. This is a best-effort method and depending on open file descriptors, it may not
 	 * be able to delete the PID file.
 	 */
 	public void destroy()

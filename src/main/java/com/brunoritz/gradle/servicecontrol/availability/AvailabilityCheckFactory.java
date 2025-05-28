@@ -27,7 +27,7 @@ public final class AvailabilityCheckFactory
 	 * @param servicePort
 	 * 	The property holding the service's TCP port, may have no value
 	 * @param startupLogMessage
-	 * 	The expected log message that indicats a successful start may have no value
+	 * 	The expected log message that indicates a successful start may have no value
 	 * @param standardOutputLog
 	 * 	The log file in which to look for the success message, may be empty but required when {@code startupLogMessage}
 	 * 	is defined

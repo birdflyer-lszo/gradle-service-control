@@ -7,8 +7,8 @@ import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * Checks whether a service is available by looking for a apecific log message in the service's standard output log
- * file. A service is considered running, if any message is found that contains the spefied text.
+ * Checks whether a service is available by looking for a specific log message in the service's standard output log
+ * file. A service is considered running, if any message is found that contains the specified text.
  * <p>
  * Consumers have to ensure {@link #close()} be called once this checker is no longer needed.
  */

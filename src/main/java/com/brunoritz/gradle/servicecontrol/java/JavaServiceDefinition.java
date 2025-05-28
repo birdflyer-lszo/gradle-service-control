@@ -181,8 +181,8 @@ public class JavaServiceDefinition
 	}
 
 	/**
-	 * The argument file used to pass all command line arguments to the JVM. An arguments file is needed since some
-	 * classpaths can be way too long for Windows to handle them.
+	 * The argument file used to pass all command line arguments to the JVM. An arguments file is needed since sometimes
+	 * the classpath can be way too long for Windows to handle it.
 	 * <p>
 	 * Defaults to {@code buildDir/jvmargs.&lt;service-name&gt;.txt}.
 	 */
