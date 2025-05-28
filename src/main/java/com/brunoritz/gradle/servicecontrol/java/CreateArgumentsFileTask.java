@@ -90,7 +90,7 @@ public abstract class CreateArgumentsFileTask
 				.getOrElse("");
 
 			return String.format("-javaagent:%s%s", agentFile, args);
-		} else if (agentFiles.size() == 0) {
+		} else if (agentFiles.isEmpty()) {
 			return "";
 		} else {
 			throw new IllegalArgumentException("Agent configuration may only contain one single file");

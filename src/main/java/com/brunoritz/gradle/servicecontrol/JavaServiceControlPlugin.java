@@ -149,7 +149,7 @@ public class JavaServiceControlPlugin
 		JavaApplication application = evaluatedProject.getExtensions().findByType(JavaApplication.class);
 		Property<CharSequence> serviceMainClass = newService.getMainClass();
 
-		if ((application != null) && (serviceMainClass.getOrElse("").length() == 0)) {
+		if ((application != null) && (serviceMainClass.getOrElse("").isEmpty())) {
 			String mainClass = application.getMainClass().getOrElse("");
 
 			serviceMainClass.set(mainClass);
