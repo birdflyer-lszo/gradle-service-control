@@ -109,7 +109,7 @@ configurations["integrationTestImplementation"].extendsFrom(configurations["test
 dependencies {
 	implementation("com.github.spotbugs:spotbugs-annotations:4.9.1")
 	implementation("commons-io:commons-io:2.19.0")
-	implementation("io.vavr:vavr:0.10.5")
+	implementation("io.vavr:vavr:0.10.6")
 	implementation("net.jcip:jcip-annotations:1.0")
 
 	testImplementation("cglib:cglib-nodep:3.3.0")
