@@ -22,7 +22,10 @@ public class LogMessageAvailabilityCheck
 	public LogMessageAvailabilityCheck(File logFile, String expectedLogMessage)
 	{
 		serviceRunning = new AtomicBoolean();
-		tailer = new Tailer(logFile, new LogMessageListener(expectedLogMessage, serviceRunning));
+		tailer = Tailer.builder()
+			.setFile(logFile)
+			.setTailerListener(new LogMessageListener(expectedLogMessage, serviceRunning))
+			.get();
 		tailerThread = new Thread(tailer);
 		tailerThread.setDaemon(true);
 	}
@@ -42,6 +45,6 @@ public class LogMessageAvailabilityCheck
 	@Override
 	public void close()
 	{
-		tailer.stop();
+		tailer.close();
 	}
 }
