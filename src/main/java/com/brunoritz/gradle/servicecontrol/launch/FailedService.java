@@ -4,7 +4,7 @@ import com.brunoritz.gradle.servicecontrol.common.PidFile;
 
 /**
  * A service that failed to expose the configured TCP port within the allowed amount of time. This class provides a
- * method to cleanup any state being kept about the service.
+ * method to clean up any state being kept about the service.
  */
 class FailedService
 {
@@ -18,8 +18,8 @@ class FailedService
 	}
 
 	/**
-	 * Destroys the process, if it is running and removes its PID file so that future startup attepmts do not fail. The
-	 * deletion of the PID file is best-effort.
+	 * Destroys the process, if it is running and removes its PID file so that future startups do not fail. The deletion
+	 * of the PID file is best-effort.
 	 */
 	void cleanupService()
 	{

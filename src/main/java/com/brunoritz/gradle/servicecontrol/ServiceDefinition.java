@@ -68,7 +68,7 @@ public interface ServiceDefinition
 	ListProperty<CharSequence> getArgs();
 
 	/**
-	 * The port number on which the service is expected to setup a listening TCP socket. A service is considered
+	 * The port number on which the service is expected to set up a listening TCP socket. A service is considered
 	 * started once the socket is listening on this port. If no port is defined, a log marker message for the startup
 	 * has to be specified.
 	 *
@@ -77,7 +77,7 @@ public interface ServiceDefinition
 	Property<Integer> getServicePort();
 
 	/**
-	 * The message to expect in the log output when the serivce has started. If no log message is defined, a service
+	 * The message to expect in the log output when the service has started. If no log message is defined, a service
 	 * port has to be specified.
 	 * <p>
 	 * The message defined here is partially matched against a service's standard output log. The expected message

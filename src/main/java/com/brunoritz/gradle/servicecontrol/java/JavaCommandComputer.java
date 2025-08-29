@@ -16,7 +16,7 @@ import java.io.File;
  * The computed command will contain the following elements:
  * <ol>
  *     <li>Java executable</li>
- *     <li>Arguments file (Windows cannt handle long command lines with a full classpath)</li>
+ *     <li>Arguments file (Windows cannot handle long command lines with a full classpath)</li>
  *     <li>Main class name</li>
  *     <li>Program arguments</li>
  * </ol>

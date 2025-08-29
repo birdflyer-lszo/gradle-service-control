@@ -49,7 +49,7 @@ public class StopServiceTask
 	{
 		pidFile.readNumericPid()
 			.onSuccess(pid -> pid
-				.onEmpty(() -> getLogger().warn("Emtpy PID file found. Process might be in undefined state."))
+				.onEmpty(() -> getLogger().warn("Empty PID file found. Process might be in undefined state."))
 				.map(ProcessHandle::of)
 				.filter(Optional::isPresent)
 				.map(Optional::get)
@@ -66,8 +66,7 @@ public class StopServiceTask
 				() -> {
 					/*
 					 * On Windows certain processes fail to terminate, if only the one launched by this plugin is
-					 * requested
-					 * to terminate, in particular NodeJS. So we terminate all processes in the hierarchy.
+					 * requested to terminate, in particular Node.js. So we terminate all processes in the hierarchy.
 					 */
 					toTerminate.descendants().forEach(ProcessHandle::destroyForcibly);
 					toTerminate.destroy();

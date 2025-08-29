@@ -25,7 +25,7 @@ import static com.brunoritz.gradle.servicecontrol.common.TaskNameFactory.taskNam
 
 /**
  * The {@code java-service-control} plugin allows starting, stopping and restarting of Java services. The services
- * are kept alive for as long as the Gradle Daemon is running or they are stopped with the corresponding task.
+ * are kept alive for as long as the Gradle Daemon is running or stopped with the corresponding task.
  * <p>
  * This plugin provides a {@code javaServiceControl} extension through which the aspects of the services to be
  * controlled can be configured. Each service is associated the following tasks:
@@ -149,7 +149,7 @@ public class JavaServiceControlPlugin
 		JavaApplication application = evaluatedProject.getExtensions().findByType(JavaApplication.class);
 		Property<CharSequence> serviceMainClass = newService.getMainClass();
 
-		if ((application != null) && (serviceMainClass.getOrElse("").length() == 0)) {
+		if ((application != null) && (serviceMainClass.getOrElse("").isEmpty())) {
 			String mainClass = application.getMainClass().getOrElse("");
 
 			serviceMainClass.set(mainClass);
