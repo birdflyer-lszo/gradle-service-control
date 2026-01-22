@@ -5,10 +5,10 @@ pluginManagement {
 	}
 
 	plugins {
-		id("com.gradle.plugin-publish").version("1.2.1")
-		id("com.github.spotbugs").version("5.2.1")
+		id("com.gradle.plugin-publish").version("2.0.0")
+		id("com.github.spotbugs").version("6.4.8")
 		id("org.checkerframework").version("0.6.34")
-		id("me.qoomon.git-versioning").version("6.4.2")
+		id("me.qoomon.git-versioning").version("6.4.4")
 	}
 }
 

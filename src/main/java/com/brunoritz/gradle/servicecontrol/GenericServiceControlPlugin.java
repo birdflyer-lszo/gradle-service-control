@@ -46,7 +46,7 @@ public class GenericServiceControlPlugin
 	{
 		ExtensionContainer extensions = project.getExtensions();
 		NamedDomainObjectContainer<GenericServiceDefinition> genericServices =
-			project.container(GenericServiceDefinition.class);
+			project.getObjects().domainObjectContainer(GenericServiceDefinition.class);
 
 		extensions.add("genericServiceControl", genericServices);
 

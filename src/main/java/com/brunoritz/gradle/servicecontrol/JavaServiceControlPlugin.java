@@ -53,7 +53,7 @@ public class JavaServiceControlPlugin
 	{
 		ExtensionContainer extensions = project.getExtensions();
 		NamedDomainObjectContainer<JavaServiceDefinition> javaServices =
-			project.container(JavaServiceDefinition.class);
+			project.getObjects().domainObjectContainer(JavaServiceDefinition.class);
 
 		extensions.add("javaServiceControl", javaServices);
 
