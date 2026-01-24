@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.nio.charset.StandardCharsets;
-import java.util.Objects;
 
 /**
  * A utility for reading and writing PID files.
@@ -103,7 +102,6 @@ public class PidFile
 	private static Option<Long> toOptionalNumeric(String content)
 	{
 		return Option.of(content)
-			.filter(Objects::nonNull)
 			.filter(line -> !line.isBlank())
 			.map(Long::parseLong);
 	}
