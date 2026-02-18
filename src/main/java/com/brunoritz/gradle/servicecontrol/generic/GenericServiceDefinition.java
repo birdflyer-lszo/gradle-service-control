@@ -71,7 +71,7 @@ public class GenericServiceDefinition
 	}
 
 	/**
-	 * The application to execute. This can eitherh be the fully qualified path or the name of a binary contained in
+	 * The application to execute. This can either be the fully qualified path or the name of a binary contained in
 	 * the directories in {@code PATH}.
 	 * <p>
 	 * <b>This is a mandatory property</b>

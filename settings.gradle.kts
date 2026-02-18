@@ -1,0 +1,33 @@
+pluginManagement {
+	repositories {
+		gradlePluginPortal()
+		mavenCentral()
+	}
+
+	plugins {
+		id("com.gradle.plugin-publish").version("2.0.0")
+		id("com.github.spotbugs").version("6.4.8")
+		id("org.checkerframework").version("0.6.34")
+		id("me.qoomon.git-versioning").version("6.4.4")
+	}
+}
+
+plugins {
+	id("com.gradle.enterprise").version("3.15.1")
+}
+
+dependencyResolutionManagement {
+	repositories {
+		mavenCentral()
+	}
+}
+
+gradleEnterprise {
+	buildScan {
+		publishAlwaysIf(System.getenv("CI") != null)
+		termsOfServiceUrl = "https://gradle.com/terms-of-service"
+		termsOfServiceAgree = "yes"
+	}
+}
+
+rootProject.name = "service-control"

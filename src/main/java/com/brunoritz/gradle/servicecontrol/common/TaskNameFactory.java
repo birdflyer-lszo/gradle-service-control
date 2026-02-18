@@ -48,7 +48,7 @@ public final class TaskNameFactory
 	 * Computes the name for an arbitrary action task {@code <actionName><capitalized-service-name>}.
 	 *
 	 * @param actionName
-	 * 	The name of the action for which to compute a the name
+	 * 	The name of the action for which to compute a task name
 	 * @param serviceName
 	 * 	The name of the service as passed into the service definition
 	 */

@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 
 /**
  * This task creates an arguments file for the Java service to be started. Argument files are necessary because the
- * classpath of a Java application can be come longer than Windows allows passing via command line.
+ * classpath of a Java application can become longer than Windows allows passing via command line.
  * <p>
  * The arguments that are written into the arguments file will be the following:
  * <ul>
@@ -90,7 +90,7 @@ public abstract class CreateArgumentsFileTask
 				.getOrElse("");
 
 			return String.format("-javaagent:%s%s", agentFile, args);
-		} else if (agentFiles.size() == 0) {
+		} else if (agentFiles.isEmpty()) {
 			return "";
 		} else {
 			throw new IllegalArgumentException("Agent configuration may only contain one single file");

@@ -18,7 +18,7 @@ import static com.brunoritz.gradle.servicecontrol.common.TaskNameFactory.stopTas
 
 /**
  * The {@code generic-service-control} plugin allows starting, stopping and restarting of arbitrary services. The
- * services are kept alive for as long as the Gradle Daemon is running or they are stopped with the corresponding task.
+ * services are kept alive for as long as the Gradle Daemon is running or stopped with the corresponding task.
  * <p>
  * This plugin provides a {@code genericServiceControl} extension through which the aspects of the services to be
  * controlled can be configured. Each service is associated the following tasks:
@@ -46,7 +46,7 @@ public class GenericServiceControlPlugin
 	{
 		ExtensionContainer extensions = project.getExtensions();
 		NamedDomainObjectContainer<GenericServiceDefinition> genericServices =
-			project.container(GenericServiceDefinition.class);
+			project.getObjects().domainObjectContainer(GenericServiceDefinition.class);
 
 		extensions.add("genericServiceControl", genericServices);
 
