@@ -107,7 +107,7 @@ gradlePlugin {
 configurations["integrationTestImplementation"].extendsFrom(configurations["testImplementation"])
 
 dependencies {
-	implementation("com.github.spotbugs:spotbugs-annotations:4.9.8")
+	implementation("com.github.spotbugs:spotbugs-annotations:4.10.3")
 	implementation("commons-io:commons-io:2.22.0")
 	implementation("io.vavr:vavr:1.0.1")
 	implementation("net.jcip:jcip-annotations:1.0")
